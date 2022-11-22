@@ -1,0 +1,47 @@
+#include <DFPlayer_Mini_Mp3.h>
+#include <SoftwareSerial.h>
+
+int pushbutton1 = 11; // declara o push button na porta 11
+int pushbutton2 = 12;
+int pushbutton3 = 13;
+
+//----------mp3
+SoftwareSerial mp3Serial(3,2); //RX e TX ligar invertido
+
+void setup() {
+  //----------mp3
+  mp3Serial.begin(9600); 
+  mp3_set_serial(mp3Serial);   
+  delay(1000); 
+  mp3_set_volume(30);
+
+  //----------botões
+  pinMode(pushbutton1, INPUT_PULLUP); // define o pino do botao como entrada
+  pinMode(pushbutton2, INPUT_PULLUP);
+  pinMode(pushbutton3, INPUT_PULLUP);
+  
+  digitalRead(pushbutton1) == LOW;
+  digitalRead(pushbutton2) == LOW;
+  digitalRead(pushbutton2) == LOW;
+  
+}
+
+void loop() {
+
+    if (digitalRead(pushbutton1) == HIGH){
+      mp3_play(1); //música "sentimento" - "cor"
+      delay(30000);
+    }
+
+    if (digitalRead(pushbutton2) == HIGH){
+      mp3_play(2); //música "sentimento" - "cor"
+      delay(30000);
+    }
+
+    if (digitalRead(pushbutton3) == HIGH){
+      mp3_play(3); //música "sentimento" - "cor"
+      delay(30000);
+    }
+    
+}
+
